@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -12,9 +12,17 @@ import { TimerComponent } from './timer/timer.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   @ViewChild(TimerComponent)
   child!: TimerComponent;
+
+ngOnInit(): void {
+  if(this.child){
+    this.child.sub.subscribe(s=> {
+      this.isStarted = s;
+    })
+  }
+}
 
   title = 'exercise-app';
   isStarted = false;

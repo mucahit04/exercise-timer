@@ -1,7 +1,7 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   Title
-} from "./chunk-F2U5FTJQ.js";
+} from "./chunk-OFBEUVYE.js";
 import {
   DOCUMENT,
   HashLocationStrategy,
@@ -10,7 +10,7 @@ import {
   LocationStrategy,
   PathLocationStrategy,
   ViewportScroller
-} from "./chunk-HCFBPZ3H.js";
+} from "./chunk-444777UM.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   APP_INITIALIZER,
@@ -55,7 +55,6 @@ import {
   isStandalone,
   makeEnvironmentProviders,
   reflectComponentType,
-  require_cjs,
   require_operators,
   runInInjectionContext,
   setClassMetadata,
@@ -79,7 +78,10 @@ import {
   ɵɵloadQuery,
   ɵɵqueryRefresh,
   ɵɵsanitizeUrlOrResourceUrl
-} from "./chunk-VAMGWXBZ.js";
+} from "./chunk-TCWX6PIO.js";
+import {
+  require_cjs
+} from "./chunk-VDZEJD3D.js";
 import {
   __spreadProps,
   __spreadValues,

@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -6,6 +6,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-timer',
   standalone: true,
@@ -43,6 +44,9 @@ export class TimerComponent {
   isHardPace = true;
   isStarted = false;
   interval: string | number | NodeJS.Timeout | undefined;
+  sub: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  @Output() timerStopped = new EventEmitter<boolean>(false);
 
   timeMenuOpened = false;
 
@@ -75,19 +79,22 @@ export class TimerComponent {
   }
   stop() {
     this.isStarted = false;
+
     clearInterval(this.interval);
     this.display = this.time;
   }
 
   onHardDurationChange(event: any){
-      this.time = event.value.duration;
-      this.display = this.time;
-      this.stop();
+    this.stop();
+    this.timerStopped.emit();
+    this.time = event.value.duration;
+    this.display = this.time;
   }
     
   onSlowDurationChange(event: any){
-    this.slowPace = event.value.duration;
     this.stop();
+    this.timerStopped.emit();
+    this.slowPace = event.value.duration;
   }
 
   
