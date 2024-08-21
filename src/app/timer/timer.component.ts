@@ -5,12 +5,36 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-timer',
   standalone: true,
   imports: [MatFormFieldModule, MatSelectModule, MatInputModule, MatRadioModule, FormsModule, CommonModule],
   templateUrl: './timer.component.html',
-  styleUrl: './timer.component.css'
+  styleUrl: './timer.component.css',
+  animations: [
+    trigger(
+      'inOutAnimation', 
+      [
+        transition(
+          ':enter', 
+          [
+            style({ height: 0, opacity: 0 }),
+            animate('1s ease-out', 
+                    style({ height: 383, opacity: 1 }))
+          ]
+        ),
+        transition(
+          ':leave', 
+          [
+            style({ height: 383, opacity: 1 }),
+            animate('1s ease-in', 
+                    style({ height: 0, opacity: 0 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
 export class TimerComponent {
 
@@ -19,6 +43,8 @@ export class TimerComponent {
   isHardPace = true;
   isStarted = false;
   interval: string | number | NodeJS.Timeout | undefined;
+
+  timeMenuOpened = false;
 
   selectedHardPaceDuration: number = 20;
   durationList: number[] = [10, 20, 30, 40, 50, 60];
@@ -30,6 +56,7 @@ export class TimerComponent {
 
  start() {
   this.isStarted = true;
+  this.timeMenuOpened = false;
     this.interval = setInterval(() => {
         if (this.display === 0) {
           if(this.isHardPace){
@@ -63,5 +90,5 @@ export class TimerComponent {
     this.stop();
   }
 
-
+  
 }

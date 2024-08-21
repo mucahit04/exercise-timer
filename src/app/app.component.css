@@ -9,4 +9,13 @@
 .mat-mdc-button-base {
     margin: 8px 16px 8px 16px;
     font-size: 1.1em;
-  }
+}
+
+.buttons{
+    margin-top: 5rem;
+}
+
+.dropdown {
+  margin-top: 1rem;
+  fill: midnightblue;
+}

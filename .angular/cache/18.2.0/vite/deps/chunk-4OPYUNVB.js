@@ -1,7 +1,6 @@
-import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   DOCUMENT
-} from "./chunk-HCFBPZ3H.js";
+} from "./chunk-BHONMLYV.js";
 import {
   ANIMATION_MODULE_TYPE,
   Inject,
@@ -13,7 +12,7 @@ import {
   setClassMetadata,
   ɵɵdefineInjectable,
   ɵɵinject
-} from "./chunk-VAMGWXBZ.js";
+} from "./chunk-BODL3YO4.js";
 
 // node_modules/@angular/animations/fesm2022/animations.mjs
 var AnimationMetadataType;
@@ -48,6 +47,13 @@ function animate(timings, styles = null) {
     timings
   };
 }
+function group(steps, options = null) {
+  return {
+    type: AnimationMetadataType.Group,
+    steps,
+    options
+  };
+}
 function sequence(steps, options = null) {
   return {
     type: AnimationMetadataType.Sequence,
@@ -70,10 +76,23 @@ function state(name, styles, options) {
     options
   };
 }
+function keyframes(steps) {
+  return {
+    type: AnimationMetadataType.Keyframes,
+    steps
+  };
+}
 function transition(stateChangeExpr, steps, options = null) {
   return {
     type: AnimationMetadataType.Transition,
     expr: stateChangeExpr,
+    animation: steps,
+    options
+  };
+}
+function animation(steps, options = null) {
+  return {
+    type: AnimationMetadataType.Reference,
     animation: steps,
     options
   };
@@ -84,12 +103,26 @@ function animateChild(options = null) {
     options
   };
 }
-function query(selector, animation, options = null) {
+function useAnimation(animation2, options = null) {
+  return {
+    type: AnimationMetadataType.AnimateRef,
+    animation: animation2,
+    options
+  };
+}
+function query(selector, animation2, options = null) {
   return {
     type: AnimationMetadataType.Query,
     selector,
-    animation,
+    animation: animation2,
     options
+  };
+}
+function stagger(timings, animation2) {
+  return {
+    type: AnimationMetadataType.Stagger,
+    timings,
+    animation: animation2
   };
 }
 var _AnimationBuilder = class _AnimationBuilder {
@@ -134,10 +167,10 @@ var _BrowserAnimationBuilder = class _BrowserAnimationBuilder extends AnimationB
       throw new RuntimeError(3600, (typeof ngDevMode === "undefined" || ngDevMode) && "Angular detected that the `AnimationBuilder` was injected, but animation support was not enabled. Please make sure that you enable animations in your application by calling `provideAnimations()` or `provideAnimationsAsync()` function.");
     }
   }
-  build(animation) {
+  build(animation2) {
     const id = this._nextAnimationId;
     this._nextAnimationId++;
-    const entry = Array.isArray(animation) ? sequence(animation) : animation;
+    const entry = Array.isArray(animation2) ? sequence(animation2) : animation2;
     issueAnimationCommand(this._renderer, null, id, "register", [entry]);
     return new BrowserAnimationFactory(id, this._renderer);
   }
@@ -477,12 +510,20 @@ export {
   AUTO_STYLE,
   trigger,
   animate,
+  group,
   sequence,
   style,
   state,
+  keyframes,
   transition,
+  animation,
   animateChild,
+  useAnimation,
   query,
+  stagger,
+  AnimationBuilder,
+  AnimationFactory,
+  BrowserAnimationBuilder,
   NoopAnimationPlayer,
   AnimationGroupPlayer,
   ɵPRE_STYLE
@@ -496,4 +537,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-ZRIIBELV.js.map
+//# sourceMappingURL=chunk-4OPYUNVB.js.map

@@ -22,6 +22,8 @@ export class AppComponent {
   slowPace = 10;
   isHardPace = true;
 
+  timeMenuOpened = false;
+
   startClicked(){
     this.isStarted = true;
     this.child.start();
@@ -30,5 +32,11 @@ export class AppComponent {
   stopClicked(){
     this.isStarted = false;
     this.child.stop();
+  }
+
+  toggleTimeMenu(){
+    this.timeMenuOpened = !this.timeMenuOpened;
+    this.child.timeMenuOpened = !this.child.timeMenuOpened;
+    console.log("menu opened");
   }
 }

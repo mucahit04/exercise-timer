@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="timeMenuOpened" [@inOutAnimation]>
     <div class="row">
         <div class="col">
             <h4>Tempolu sure</h4>
@@ -24,17 +24,9 @@
         </div>
     </div>
     <!-- <h2 class="paceMode" [ngClass]="isHardPace ? 'tempo' : 'sakin'">{{isHardPace ? "Tempo" : "Sakin"}}</h2> -->
-    <div class="timer">
-        <div class="circle-timer">
-            <div class="timer-slot">
-                <div class="timer-lt"></div>
-            </div>
-            <div class="timer-slot">
-                <div class="timer-rt"></div>
-            </div>
-            <div class="count">{{display}}</div>
-        </div>
-    </div>
+</div>
+<div class="timer">
+    <div class="count">{{display}}</div>
 </div>
 <div class="images">
     <img *ngIf="isHardPace && isStarted" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp3dDRoeXJ5d2pqdGxtZXc1bDJjaGEwZHExMzQ1NW8zc2M5Zm11OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fBEMsUeGHdpsClFsxM/giphy.webp" alt="">

@@ -3,6 +3,7 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    transition: height 1s;
 }
 h4{
     color: rgb(212, 72, 205);
@@ -12,18 +13,18 @@ h4{
 .count{
 width: 100%;
 height: 100%;
-font-size: 8rem;
+font-size: 6rem;
 color: white;
 text-align: center;
-line-height: 200px;
 font-family: sans-serif;
+margin-top: 5rem;
+margin-bottom: 1rem;
 }
 
 .example-radio-group {
 display: flex;
 flex-direction: column;
 margin: 15px 0;
-align-items: flex-start;
 }
 
 
@@ -32,12 +33,13 @@ align-items: flex-start;
     grid-template-columns: repeat(2, 200px);
     padding-top: 2rem;
     width: 100%;
-    justify-content:space-between
-    /* justify-items: stretch; */
+    justify-content:space-between;
+    grid-column-gap: 1rem;
 }
 
 .col{
-    width: 40%;
+    width: 45%;
+    align-self: center;
 }
 
 .paceMode{
@@ -53,8 +55,8 @@ align-items: flex-start;
 
 .images{
     display: block;
+    transform: translateY(50%);
     position: fixed;
-    bottom: 0rem;
 }
 img{
     width: 100vw;
