@@ -21,13 +21,13 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           [
             style({ height: 0, opacity: 0 }),
             animate('1s ease-out', 
-                    style({ height: 383, opacity: 1 }))
+                    style({ height: 359, opacity: 1 }))
           ]
         ),
         transition(
           ':leave', 
           [
-            style({ height: 383, opacity: 1 }),
+            style({ height: 359, opacity: 1 }),
             animate('1s ease-in', 
                     style({ height: 0, opacity: 0 }))
           ]
